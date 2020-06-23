@@ -35,6 +35,8 @@ def get_all_hosted_zones_count():
 
 
 def list_resource_record_sets(hostedzoneid, maxitems):
+    if maxitems is None:
+        maxitems = '20'
     route53client=boto3.client('route53',
                                aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
                                aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
@@ -94,15 +96,52 @@ def delete_hosted_zone(hostedzoneid):
         print(error)
 
 
-# create_hosted_zone('bangaloreprivate.com', None, None, None, True)
+# Create arg parser and subparsers
+parser = argparse.ArgumentParser(description='Run route53 commands')
 
-count = get_all_hosted_zones_count()
-print(count)
+# add all arguments
+parser.add_argument('--action', choices=['list_hostedzones', 'list_recordsets', 'create', 'delete'], help="allowed actions")
+parser.add_argument('--hostedzone-id', help='hostedzone-id is required argument to list hosted zone, delete hosted zone')
+parser.add_argument('--zone-name', help="zone-name is a required argument to create hosted zone ")
+parser.add_argument('--region', default="us-east-1", help="aws region")
+parser.add_argument('--comment', help="Include comment to enter details about the hosted zone")
+parser.add_argument('--vpc-region', help="Required argument to create provate hosted zone")
+parser.add_argument('--vpcid', help="Required argument for the selected --vpc-region")
+parser.add_argument('--private_zone', help="if True, the hosted zones are created in VPC network. if True --vpc-region, --vpcid are required arguments ")
+parser.add_argument('--maxitems', help="Number if hosted zones items you want to display")
 
-get_list_route = get_all_hosted_zones()
-print(get_list_route)
 
-# get_list_records = list_resource_record_sets('Z0082379324UOUCAU9VNP', '10')
-# print(get_list_records)
+# process arguments
+args = vars(parser.parse_args())
 
-# delete_hosted_zone('Z01008541J5LQCNMR06VU')
+if args['action'] is None:
+    print('--action is a mandatory argument. You cannot use this utility without --action argument')
+    exit(1)
+
+if args['action'] == 'list_hostedzones': # 'get_all_hosted_zones' action
+    print(get_all_hosted_zones())
+
+elif args['action'] == 'get_all_hosted_zones_count': # 'get_all_hosted_zones_count' action
+    print(get_all_hosted_zones_count())
+
+elif args['action'] == 'list_recordsets': # 'list_recordsets' action
+    if args['hostedzone-id'] is None:
+        print('--hostedzone-id is a mandatory argument for list_recordsets action')
+        print('Example command for list_recordsets: --action list_recordsets --hostedzone-id HostedZoneID')
+    else:
+        list_resource_record_sets(args['hostedzone-id'], args['maxitems'])
+
+elif args['action'] == 'create': # 'create' action
+    if args['zone-name'] is None:
+        print('--zone-name is a mandatory argument for create hosted zone action')
+        print('Example command for create: --action create zone-name, comment, vpc-region, vpcid, private_zone=True|False')
+    else:
+        create_hosted_zone(args['--zone-name'], args['comment'], args['vpc-region'], args['vpcid'], args['private_zone'])
+
+elif args['action'] == 'delete': # 'delete' action
+    if args['hostedzone-id'] is None:
+        print('--hostedzone-id is a mandatory argument for delete hosted zone action')
+        print('Example command for delete: --action delete --hostedzone-id HostedZoneID')
+    else:
+        delete_hosted_zone(args['--hostedzone-id'])
+
