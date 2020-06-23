@@ -7,8 +7,5 @@ ENV AWS_AZ=us-east-1
 ENV AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
 ENV AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
 
-WORKDIR /usr/local/bin
+COPY service/*.py /
 
-COPY service/s3.py .
-
-CMD [ "python3", "s3.py" ]

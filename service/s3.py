@@ -1,5 +1,6 @@
 import os
 import boto3
+import argparse
 
 
 # create s3 bucket
@@ -38,9 +39,9 @@ def list_s3_buckets():
 
 # upload file
 # if bucket does't exits, create it and then upload
-def upload_s3_file(filename, bucket_name, key, acl='public-read'):
+def upload_s3_file(filepath, bucket_name, key, acl='public-read'):
     if key is None:
-        key = filename.split('/')[-1]
+        key = filepath.split('/')[-1]
     s3client = boto3.client('s3',
                             aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
                             aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
@@ -48,10 +49,10 @@ def upload_s3_file(filename, bucket_name, key, acl='public-read'):
     try:
         if not bucket_exists(bucket_name):
             create_s3_bucket(acl, bucket_name, None)
-        s3client.upload_file(filename, bucket_name, key,
+        s3client.upload_file(filepath, bucket_name, key,
                              ExtraArgs={
                                  'ACL': acl})
-        print('File uploaded')
+        print('File uploaded', key)
     except Exception as error:
         print(error)
 
@@ -68,3 +69,59 @@ def upload_s3_file(filename, bucket_name, key, acl='public-read'):
 def bucket_exists(bucket_name):
     s3 = boto3.resource('s3')
     return s3.Bucket(bucket_name).creation_date is not None
+
+
+# Create arg parser and subparsers
+parser = argparse.ArgumentParser(description='Run s3 commands')
+subparsers = parser.add_subparsers(dest='subcommand')
+
+# add arguments
+parser.add_argument('--action', choices=['list', 'create_bucket', 'upload_file'], help="allowed actions")
+parser.add_argument('--acl', default="public-read", help='acl for the bucket')
+parser.add_argument('--bucket', help="bucket name")
+parser.add_argument('--region', default="us-east-1", help="region")
+parser.add_argument('--filepath', help="full path of the file")
+parser.add_argument('--key', help="file name to be set after upload")
+
+##
+# subparser for --create
+# parser_create = subparsers.add_parser('create_bucket')
+#  add a sub argument
+# parser_create.add_argument('--acl', default="public-read", help='acl for the bucket')
+# parser_create.add_argument('--bucket', help="bucket name")
+# parser_create.add_argument('--region', default="us-east-1", help="region")
+
+# subparser for --create
+# parser_update = subparsers.add_parser('upload_file')
+#
+# add a sub argument
+# parser_update.add_argument('--filepath', help="full path of the file")
+# parser_update.add_argument('--bucket', help="bucket name")
+# parser_update.add_argument('--key', help="file name to be set after upload")
+# parser_update.add_argument('--acl', default="public-read", help='acl for the bucket')
+##
+
+# process arguments
+args = vars(parser.parse_args())
+if args['action'] == 'list':
+    print(list_s3_buckets())
+
+
+#if args.action == 'create_bucket':
+if args['action'] == 'create_bucket':
+    if args['bucket'] is None:
+        print('bucket is a mandatory argument for create_bucket action')
+        print('--region and --acl are optional arguments for create_bucket action')
+        print('Example command for create_bucket: --action create_bucket --acl ACL --bucket BUCKET_NAME --region REGION')
+    else:
+        create_s3_bucket(args['acl'], args['bucket'], args['region'])
+
+if args.action == 'upload_file':
+    if args.filepath is None or args.bucket is None:
+        print('--bucket and --filepath are mandatory arguments for upload_file action')
+        print('--key and --acl are optional arguments for upload_file action')
+        print('Example command for upload_file: --action upload_file --filpath FILEPATH --bucket BUCKET_NAME --region REGION --acl ACL')
+#result = shorten_url(args['url'])
+
+
+#print(list_s3_buckets())

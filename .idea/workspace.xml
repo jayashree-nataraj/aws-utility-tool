@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bf272fb3-8b0a-4539-8a70-cfb90bc69425" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/route53.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/route53.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/s3.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,68 +17,96 @@
     <session id="407952583">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="LICENSE" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="16" />
+          <entry key="py" value="23" />
+          <entry key="sh" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="15" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="22" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="py" value="3888" />
+          <entry key="py" value="4910" />
+          <entry key="sh" value="594" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="3888" />
+          <entry key="Bash" value="8" />
+          <entry key="PLAIN_TEXT" value="593" />
+          <entry key="Python" value="4910" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/route53.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="105" column="45" lean-forward="true" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+            <state relative-caret-position="51">
+              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
-                <marker date="1592876779366" expanded="true" signature="64:795" ph="..." />
-                <marker date="1592876779366" expanded="true" signature="1108:3656" ph="..." />
-                <marker date="1592876779366" expanded="true" signature="2180:2185" ph="..." />
-                <marker date="1592876779366" expanded="true" signature="3089:3602" ph="..." />
+                <marker date="1592892616434" expanded="true" signature="80:811" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/service/s3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1016">
+              <caret line="113" column="17" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1592926721358" expanded="true" signature="839:858" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service/s3.py">
+        <entry file="file://$PROJECT_DIR$/run_s3.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="20" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="21" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1592799438511" expanded="true" signature="823:842" ph="..." />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_r53.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -94,6 +124,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>get_route53_hosted_zones_count</find>
+      <find>create_bucket</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -104,10 +135,14 @@
       <list>
         <option value="$PROJECT_DIR$/s3.py" />
         <option value="$PROJECT_DIR$/tests/s3_tests.py" />
-        <option value="$PROJECT_DIR$/service/s3.py" />
         <option value="$PROJECT_DIR$/tests/cloudtrail.py" />
         <option value="$PROJECT_DIR$/service/ec2.py" />
+        <option value="$PROJECT_DIR$/service/aws_services_util.py" />
+        <option value="$PROJECT_DIR$/build.sh" />
         <option value="$PROJECT_DIR$/service/route53.py" />
+        <option value="$PROJECT_DIR$/run.sh" />
+        <option value="$PROJECT_DIR$/run_r53.sh" />
+        <option value="$PROJECT_DIR$/service/s3.py" />
       </list>
     </option>
   </component>
@@ -125,6 +160,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,7 +195,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,15 +317,15 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2560" y="-104" width="2560" height="1497" extended-state="6" />
+    <frame x="-2560" y="-104" width="2560" height="1497" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16252466" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16213018" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972583" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49909365" visible="true" weight="0.24747474" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909365" weight="0.24747474" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3989899" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -309,9 +344,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE">
@@ -334,20 +366,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/s3_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/cloudtrail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/cloudtrail.py" />
     <entry file="file:///usr/local/lib/python3.7/site-packages/botocore/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="661">
@@ -362,27 +381,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/s3.py">
+    <entry file="file://$PROJECT_DIR$/tests/s3_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="21" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1592799438511" expanded="true" signature="823:842" ph="..." />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/aws_services_util.py" />
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.2/python_stubs/-1199943126/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="548" column="4" selection-start-line="548" selection-start-column="4" selection-end-line="548" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service/route53.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="105" column="45" lean-forward="true" selection-start-line="105" selection-start-column="45" selection-end-line="105" selection-end-column="45" />
+        <state relative-caret-position="51">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <marker date="1592876779366" expanded="true" signature="64:795" ph="..." />
-            <marker date="1592876779366" expanded="true" signature="1108:3656" ph="..." />
-            <marker date="1592876779366" expanded="true" signature="2180:2185" ph="..." />
-            <marker date="1592876779366" expanded="true" signature="3089:3602" ph="..." />
+            <marker date="1592892616434" expanded="true" signature="80:811" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_s3.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_r53.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service/s3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1016">
+          <caret line="113" column="17" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1592926721358" expanded="true" signature="839:858" ph="..." />
           </folding>
         </state>
       </provider>

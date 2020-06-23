@@ -1,6 +1,7 @@
 import boto3
 import os
 import uuid
+import argparse
 
 
 def get_all_hosted_zones():
@@ -93,14 +94,15 @@ def delete_hosted_zone(hostedzoneid):
         print(error)
 
 
-# count = get_all_hosted_zones_count()
-# print(count)
+# create_hosted_zone('bangaloreprivate.com', None, None, None, True)
 
-# get_list_route = get_all_hosted_zones()
-# print(get_list_route)
+count = get_all_hosted_zones_count()
+print(count)
+
+get_list_route = get_all_hosted_zones()
+print(get_list_route)
 
 # get_list_records = list_resource_record_sets('Z0082379324UOUCAU9VNP', '10')
 # print(get_list_records)
 
-# create_hosted_zone('bangaloreprivate.com', None, None, None, True)
 # delete_hosted_zone('Z01008541J5LQCNMR06VU')
