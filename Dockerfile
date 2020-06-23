@@ -1,0 +1,14 @@
+FROM python:3.7.0-alpine3.8
+RUN pip3 install boto3
+
+ARG ACCESS_KEY_ID
+ARG SECRET_ACCESS_KEY
+ENV AWS_AZ=us-east-1
+ENV AWS_ACCESS_KEY_ID=$ACCESS_KEY_ID
+ENV AWS_SECRET_ACCESS_KEY=$SECRET_ACCESS_KEY
+
+WORKDIR /usr/local/bin
+
+COPY service/s3.py .
+
+CMD [ "python3", "s3.py" ]
