@@ -3,12 +3,18 @@ import boto3
 import argparse
 
 
+# create a client to login to aws
+def login():
+    client = boto3.client('s3',
+                          aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+                          aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
+                          region_name=os.environ['AWS_AZ'])
+    return client
+
+
 # create s3 bucket
 def create_s3_bucket(acl, bucket_name, region):
-    s3client = boto3.client('s3',
-                            aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-                            aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
-                            region_name=os.environ['AWS_AZ'])
+    s3client=login()
     if acl is None:
         acl = 'private'
     try:
@@ -25,10 +31,7 @@ def create_s3_bucket(acl, bucket_name, region):
 
 # list s3 bucket
 def list_s3_buckets():
-    s3client = boto3.client('s3',
-                            aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-                            aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
-                            region_name=os.environ['AWS_AZ'])
+    s3client = login()
     buckets = s3client.list_buckets()
     bucket_names = []
     for bucket in buckets['Buckets']:
@@ -42,10 +45,7 @@ def list_s3_buckets():
 def upload_s3_file(filepath, bucket_name, key, acl='public-read'):
     if key is None:
         key = filepath.split('/')[-1]
-    s3client = boto3.client('s3',
-                            aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-                            aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
-                            region_name=os.environ['AWS_AZ'])
+    s3client=login()
     try:
         if not bucket_exists(bucket_name):
             create_s3_bucket(acl, bucket_name, None)
@@ -73,6 +73,7 @@ def bucket_exists(bucket_name):
 # Create arg parser and subparsers
 parser = argparse.ArgumentParser(description='Run s3 commands')
 
+
 # add arguments
 parser.add_argument('--action', choices=['list', 'create_bucket', 'upload_file'], help="allowed actions")
 parser.add_argument('--acl', default="public-read", help='acl for the bucket')
@@ -88,11 +89,10 @@ if args['action'] is None:
     print('--action is a mandatory argument. You cannot use this utility without --action argument')
     exit(1)
 
-
-if args['action'] == 'list': # 'list' action
+if args['action'] == 'list':  # 'list' action
     print(list_s3_buckets())
 
-elif args['action'] == 'create_bucket': # 'create_bucket' action
+elif args['action'] == 'create_bucket':  # 'create_bucket' action
     if args['bucket'] is None:
         print('--bucket is a mandatory argument for create_bucket action')
         print('--region and --acl are optional arguments for create_bucket action')
@@ -100,10 +100,12 @@ elif args['action'] == 'create_bucket': # 'create_bucket' action
     else:
         create_s3_bucket(args['acl'], args['bucket'], args['region'])
 
-elif args['action'] == 'upload_file': # 'upload_file' action
+elif args['action'] == 'upload_file':  # 'upload_file' action
     if args['filepath'] is None or args['bucket'] is None:
         print('--bucket and --filepath are mandatory arguments for upload_file action')
         print('--key and --acl are optional arguments for upload_file action')
         print('Example command for upload_file: --action upload_file --filpath FILEPATH --bucket BUCKET_NAME --region REGION --acl ACL')
     else:
         upload_s3_file(args['filepath'], args['bucket'], args['key'], args['acl'])
+
+
