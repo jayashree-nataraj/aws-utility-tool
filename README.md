@@ -1,6 +1,6 @@
 # aws-utility-tool
 
-This is a docker cli tool used to perform admin level operations using the [AWS SDK](https://aws.amazon.com/sdk-for-python/) for service such as 
+This is a commad line utility tool using [AWS SDK](https://aws.amazon.com/sdk-for-python/) for AWS service such as 
 route53, s3 
 
 <!-- TOC -->
