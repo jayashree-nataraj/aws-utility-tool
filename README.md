@@ -8,8 +8,8 @@ route53, s3
 - [Usage](#usage)
 - [Examples](#examples)
     - [Determine who you are when connecting to AWS](#determine-who-you-are-when-connecting-to-aws)
-    - [Run cli commands to use s3 service](#run-s3-script-with )
-    - [Run cli commands to use route53 service](#run-route53-script-with )
+    - [Run cli commands to use s3 service](#run-s3-script-with)
+    - [Run cli commands to use route53 service](#run-route53-script-with)
 
 <!-- /TOC -->
 
